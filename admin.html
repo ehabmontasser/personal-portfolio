@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Bookings | Ehab Montasser</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <header class="site-header is-scrolled">
+    <div class="wrap header-inner">
+      <a class="wordmark" href="index.html">Ehab Montasser</a>
+      <div class="admin-account" data-account hidden>
+        <span class="label" data-account-email></span>
+        <button class="button button-line" type="button" data-sign-out>Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section admin-section" aria-labelledby="admin-title">
+      <div class="wrap section-grid">
+        <header class="section-head">
+          <span class="section-num">Admin</span>
+          <h1 class="section-title" id="admin-title">Bookings</h1>
+        </header>
+
+        <div class="section-body">
+          <p class="label" data-loading>Loading…</p>
+
+          <!-- Signed out -->
+          <form class="book-form admin-login" data-login-form hidden>
+            <div class="field">
+              <label for="login-email">Email</label>
+              <input id="login-email" name="email" type="email" autocomplete="username" required>
+            </div>
+            <div class="field">
+              <label for="login-password">Password</label>
+              <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+            </div>
+            <button class="button button-solid button-block" type="submit">Sign in</button>
+            <p class="form-status" role="status" data-login-status hidden></p>
+          </form>
+
+          <!-- Signed in without the admin role -->
+          <p class="form-status" data-no-access hidden>This account does not have access to bookings.</p>
+
+          <!-- Admin -->
+          <div data-admin-panel hidden>
+            <p class="label admin-meta">
+              <span data-booking-count>0 requests</span>
+              <span class="admin-live" data-live-state>Connecting</span>
+            </p>
+            <p class="form-status" role="status" data-admin-status hidden></p>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Received</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody data-bookings></tbody>
+              </table>
+            </div>
+            <p class="admin-empty" data-empty hidden>No booking requests yet.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>
